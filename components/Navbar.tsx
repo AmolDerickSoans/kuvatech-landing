@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import type React from "react"
 import { useState } from "react"
-import { RainbowButton } from "./magicui/rainbow-button"
 export default function Navbar({ activeSection }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
