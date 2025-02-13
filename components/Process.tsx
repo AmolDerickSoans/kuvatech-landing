@@ -1,5 +1,6 @@
 import { AuroraText } from "./magicui/aurora-text"
 
+
 export default function Process() {
   return (
     <section id="process" className="py-16 px-6">
@@ -25,7 +26,12 @@ export default function Process() {
   )
 }
 
-function ProcessStep({ number, title, description }) {
+interface ProcessStepProps{
+  number:string;
+  title:string;
+  description:string;
+}
+function ProcessStep({ number, title, description } : ProcessStepProps) {
   return (
     <div className="bg-zinc-900  p-6 rounded-lg">
       <div className="text-zinc-500 text-4xl font-bold mb-4">{number}</div>

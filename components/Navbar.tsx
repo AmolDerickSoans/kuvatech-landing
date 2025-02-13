@@ -2,7 +2,10 @@ import Link from "next/link"
 import Image from "next/image"
 import type React from "react"
 import { useState } from "react"
-export default function Navbar({ activeSection }) {
+interface NavbarProps {
+  activeSection: string; // Define the type for activeSection
+}
+export default function Navbar({ activeSection }: NavbarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {

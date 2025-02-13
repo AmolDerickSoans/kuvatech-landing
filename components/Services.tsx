@@ -37,8 +37,13 @@ export default function Services() {
     </section>
   )
 }
+interface ServiceCardProps{
+  icon:any;
+  title:string;
+  description:string;
 
-function ServiceCard({ icon, title, description }) {
+}
+function ServiceCard({ icon, title, description } : ServiceCardProps) {
   const { theme } = useTheme();
   return (
     <MagicCard className="p-6 bg-zinc-900 rounded-md"  gradientColor={theme === "dark" ? "#0A0A0A" : "#09090B"}	>
