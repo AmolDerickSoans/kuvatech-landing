@@ -1,21 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&family=Stretch+Pro&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-family-heading: 'Stretch Pro', sans-serif;
+  --font-family-body: 'Monda', sans-serif;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+h1, h2, h3 {
+  font-family: var(--font-family-heading);
+  /* Increased font size by 20% from the default or existing size */
+  font-size: 1.2em; /* Example: Adjust as needed based on your current base size */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+h2 {
+  /* You might want to adjust h2 size separately, proportionally */
+  font-size: 1.1em; /* Example: Adjust as needed */
+}
+
+h3 {
+  /* And h3 size too, proportionally */
+  font-size: 1.0em; /* Example: Adjust as needed */
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+/* Remove the background image and related properties to replace it */
+.bg-gradient-to-br {
+  /* background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hexonaoutput.jpg-jZQpcR6SKlPowKHva9BtXncCGZeOgI.jpeg"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  position: relative; /* To contain the blobs */
+  overflow: hidden; /* To hide blobs if they go outside during animation */
+}
+
+
+
+@keyframes diffuseBlobAnimation {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(20px, -10px) scale(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(10px, 15px) scale(1.05);
+    opacity: 0.65;
+  }
+}
+@layer components {
+  .frosted-glass {
+    @apply bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.glowing-border-animation {
+  position: relative; /* Required for pseudo-element positioning */
+  overflow: hidden; /* Clip the pseudo-element glow inside the rounded corners */
+}
+
+.glowing-border-animation::before {
+  content: '';
+  position: absolute;
+  top: -3px; /* Adjust to control glow thickness and start position */
+  left: -3px; /* Adjust to control glow thickness and start position */
+  right: -3px; /* Adjust to control glow thickness and end position */
+  bottom: -3px; /* Adjust to control glow thickness and end position */
+  background: linear-gradient(45deg, #708090, #808080, #708090, #808080, #708090, #808080, #708090, #808080, #708090);  z-index: -1; /* Place the glow behind the card content */
+  border-radius: inherit; /* Match the rounded corners of the card */
+  animation: glowing 20s linear infinite; /* Apply the animation */
+  background-size: 400%; /* Required for the gradient animation */
+  opacity: 0.8; /* Adjust for glow intensity */
+}
+
+.glowing-border-animation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 20px rgba(0, 220, 252, 0.3); /* Light bleed effect - adjust color and intensity */
+  border-radius: inherit; /* Match the rounded corners of the card */
+  z-index: 0; /* Place light bleed above the pseudo glow, but still behind content */
+  pointer-events: none; /* Ensure it doesn't interfere with interactions */
+}
+
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; } /* Move gradient by 400% to create movement */
+  100% { background-position: 0 0; }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+}
+@layer base {
+  :root {
+    --font-family-heading: 'Montserrat', sans-serif; /* Or 'Roboto Slab', serif; */
+    --font-family-body: 'Inter', sans-serif; /* Or 'Roboto', sans-serif; */
+
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --color-1: 210 30% 35%;
+    --color-2: 255 20% 38%;
+    --color-3: 280 25% 32%;
+    --color-4: 230 15% 40%;
+    --color-5: 275 10% 35%;
+  }
+h1, h2, h3 {
+  font-family: var(--font-family-heading);
+  /* Increased font size by 20% from the default or existing size */
+  font-size: 1.2em; /* Example: Adjust as needed based on your current base size */
+}
+
+h2 {
+  /* You might want to adjust h2 size separately, proportionally */
+  font-size: 1.1em; /* Example: Adjust as needed */
+}
+
+h3 {
+  /* And h3 size too, proportionally */
+  font-size: 1.0em; /* Example: Adjust as needed */
+}
+
+body, p, li, a {
+    font-family: var(--font-family-body);
+    font-weight: var(--font-weight-regular); /* Example for body */
+}
+  .dark {
+
+    --color-1: 210 30% 55%;  /* Slightly Darker Deep Teal Blue */
+    --color-2: 255 20% 60%;  /* Slightly Darker Lavender */
+    --color-3: 280 25% 50%;  /* Slightly Darker Rich Plum */
+    --color-4: 230 15% 65%;  /* Slightly Darker Steel Blue */
+    --color-5: 275 10% 55%;  /* Slightly Darker Dark Mauve */
+    /* ... your other CSS variables ... */
+}
+
+/* ... rest of your CSS using var(--color-*) ... */
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
