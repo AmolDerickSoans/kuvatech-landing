@@ -29,7 +29,8 @@ export default function FAQ() {
     },
   ]
 
-  const [openIndex, setOpenIndex] = useState(null)
+  // Explicitly define the type of openIndex as number or null
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <section id="faq" className="py-16 px-6">
@@ -55,4 +56,3 @@ export default function FAQ() {
     </section>
   )
 }
-
